@@ -1,0 +1,40 @@
+html
+  head
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel='stylesheet', href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css")
+    link(rel='stylesheet', href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css")
+    link(rel='stylesheet', href="./style.css")
+    script(src="./script.js")
+    script(src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js")
+    title URL Shortener
+  body
+      center
+        a(href="./" style="text-decoration: none;" class="title")
+          h1 URL Shortener
+        br
+        // URL create form
+        form(action="/")
+          div
+            input(type="url" name="url" placeholder="enter a url") 
+            input(type="text" name="slug" placeholder="enter a slug" style="margin-top: 10px;") 
+          br   
+          input(type="submit" value="shorten!")
+        br
+        a(href="./delete")="Delete a Slug" 
+        span=" | "
+        a(href="./stats")="Slug Stats"
+        br
+        br
+        // Dynamic Stuff
+        if link 
+          div
+            b Your short url is: 
+            a(href=link)=link
+            br
+            p
+              b Your delete token is:
+            input(readonly value=token id="token" onclick="copytoken()" class="copy")
+        if error
+          div
+            b ⚠️ Error: 
+            span=error

@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+	<title>API | URL Shortener</title>
+</head>
+
+<body>
+	<h1>URL Shortener API</h1>
+	<hr>
+	<h3>Create</h3>
+	<p><b>Endpoint: </b>/api/create</p>
+    <p><b>Method: </b>POST</p>
+    <p><b>Body (JSON): </b><code>{ url: [url], slug: (slug) }</code></p>
+    <p><b>Code: </b><details><summary>JavaScript / Node.js</summary><code>
+    const body = { url: &quot;https://example.com&quot;, slug: &quot;example&quot; }<br>
+    fetch(&quot;https://example.com/api/create&quot;, {<br>
+    &nbsp;&nbsp&nbsp;&nbspmethod: &quot;POST&quot;,<br>
+    &nbsp;&nbsp&nbsp;&nbspbody: JSON.stringify(body),<br>
+    &nbsp;&nbsp&nbsp;&nbspheaders: { 'Content-Type': 'application/json' },<br>
+    &nbsp;&nbsp})<br>
+    &nbsp;&nbsp&nbsp;&nbsp.then(response =&gt; response.json())<br>
+    &nbsp;&nbsp&nbsp;&nbsp.then(json =&gt; {<br>
+    &nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbspconsole.log(json);<br>
+    &nbsp;&nbsp&nbsp;&nbsp})</code></details><details><summary>Python</summary><code>
+    import requests<br>
+    from requests.structures import CaseInsensitiveDict<br><br>
+    url = &quot;https://example.com/api/create&quot;<br><br>
+    headers = CaseInsensitiveDict()<br>
+    headers[&quot;Content-Type&quot;] = &quot;application/json&quot;<br><br>
+    data = '{ &quot;url&quot;: &quot;https://example.com&quot;, &quot;slug&quot;: &quot;example&quot; }'<br><br>
+    resp = requests.post(url, headers=headers, data=data)<br></code></details></p>
+  <hr>
+  	<h3>Stats</h3>
+		<p><b>Endpoint: </b>/api/stats</p>
+    <p><b>Method: </b>POST</p>
+    <p><b>Body (JSON): </b><code>{ slug: [slug] }</code></p>
+    <p><b>Code: </b><details><summary>JavaScript / Node.js</summary><code>
+    const body = { slug: &quot;example&quot; }<br>
+    fetch(&quot;https://example.com/api/stats&quot;, {<br>
+    &nbsp;&nbsp&nbsp;&nbspmethod: &quot;POST&quot;,<br>
+    &nbsp;&nbsp&nbsp;&nbspbody: JSON.stringify(body),<br>
+    &nbsp;&nbsp&nbsp;&nbspheaders: { 'Content-Type': 'application/json' },<br>
+    &nbsp;&nbsp})<br>
+    &nbsp;&nbsp&nbsp;&nbsp.then(response =&gt; response.json())<br>
+    &nbsp;&nbsp&nbsp;&nbsp.then(json =&gt; {<br>
+    &nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbspconsole.log(json);<br>
+    &nbsp;&nbsp&nbsp;&nbsp})</code></details><details><summary>Python</summary><code>
+    import requests<br>
+    from requests.structures import CaseInsensitiveDict<br><br>
+    url = &quot;https://example.com/api/stats&quot;<br><br>
+    headers = CaseInsensitiveDict()<br>
+    headers[&quot;Content-Type&quot;] = &quot;application/json&quot;<br><br>
+    data = '{ &quot;slug&quot;: &quot;example&quot; }'<br><br>
+    resp = requests.post(url, headers=headers, data=data)<br></code></details></p>
+  	<h3>Delete</h3>
+		<p><b>Endpoint: </b>/api/delete</p>
+    <p><b>Method: </b>POST</p>
+    <p><b>Body (JSON): </b><code>{ slug: [slug], token: [token] }</code></p>
+    <p><b>Code: </b><details><summary>JavaScript / Node.js</summary><code>
+    const body = { slug: &quot;example&quot;, token: &quot;qwertyuiopasdfghjklzxcvbnm&quot; }<br>
+    fetch(&quot;https://example.com/api/delete&quot;, {<br>
+    &nbsp;&nbsp&nbsp;&nbspmethod: &quot;POST&quot;,<br>
+    &nbsp;&nbsp&nbsp;&nbspbody: JSON.stringify(body),<br>
+    &nbsp;&nbsp&nbsp;&nbspheaders: { 'Content-Type': 'application/json' },<br>
+    &nbsp;&nbsp})<br>
+    &nbsp;&nbsp&nbsp;&nbsp.then(response =&gt; response.json())<br>
+    &nbsp;&nbsp&nbsp;&nbsp.then(json =&gt; {<br>
+    &nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbspconsole.log(json);<br>
+    &nbsp;&nbsp&nbsp;&nbsp})</code></details><details><summary>Python</summary><code>
+    import requests<br>
+    from requests.structures import CaseInsensitiveDict<br><br>
+    url = &quot;https://example.com/api/delete&quot;<br><br>
+    headers = CaseInsensitiveDict()<br>
+    headers[&quot;Content-Type&quot;] = &quot;application/json&quot;<br><br>
+    data = '{ &quot;slug&quot;: &quot;example&quot;, &quot;token&quot;: &quot;qwertyuiopasdfghjklzxcvbnm&quot; }'<br><br>
+    resp = requests.post(url, headers=headers, data=data)<br></code></details></p>
+  <footer>[required] (optional)</footer>
+</body>
+</html>

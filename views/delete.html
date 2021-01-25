@@ -1,0 +1,30 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+	<link rel="stylesheet" href="./style.css" />
+
+	<title>Delete | URL Shortener</title>
+</head>
+
+<body>
+	<center>
+		<a class="title" href="./" style="text-decoration: none;">
+			<h1>URL Shortener</h1>
+		</a>
+		<br />
+   <form> 
+    <div>
+     <input type="text" name="slug" placeholder="enter a slug" required />
+     <input type="text" name="token" placeholder="enter the delete token" style="margin-top: 10px;" required />
+    </div>
+    <br />
+    <input type="submit" value="delete" /> 
+   </form>
+   <br />
+   <div id="response"></div>
+  </center>  
+ </body>
+  <script src="./delete.js"></script> 
+</html>

@@ -1,0 +1,37 @@
+/* Set sizing and vertical centering. */
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+}
+
+html, body {
+  padding: 0 !important;
+}
+
+body {
+  display: table;
+}
+
+center {
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* Fix color of title. */
+
+.title {
+  color: #000000 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: #FFFFFF !important;
+  }
+}

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js">
+
+	</script>
+	<link rel="stylesheet" href="./style.css" />
+
+	<title>URL Shortener</title>
+</head>
+
+<body>
+	<center>
+		<a class="title" href="./" style="text-decoration: none;">
+			<h1>URL Shortener</h1>
+		</a>
+		<br />
+   <form> 
+    <div>
+     <input type="url" name="url" placeholder="enter a url" required />
+     <input type="text" name="slug" placeholder="enter a slug" style="margin-top: 10px;" />
+    </div>
+    <br />
+    <input type="submit" value="shorten!" /> 
+   </form>
+   <br />
+   <a href="./delete">Delete a Slug</a>
+   <span> | </span>
+   <a href="./stats">Slug Stats</a>
+   <br />
+   <div id="response"></div>
+  </center>  
+ </body>
+  <script src="./index.js"></script> 
+</html>
