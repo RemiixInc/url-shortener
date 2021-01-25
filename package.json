@@ -4,7 +4,7 @@
   "description": "Simple URL shortener with a JSON database.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js"
   },
   "author": "RemiixInc",
   "license": "MIT",
