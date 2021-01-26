@@ -5,11 +5,11 @@ form.addEventListener("submit", event => {
   event.preventDefault();
   const url = form.elements.url.value;
   const slug = form.elements.slug.value;
-  const body = { url: url, slug: slug }
+  const body = { url: url, slug: slug };
   fetch("/api/create", {
     method: "POST",
     body: JSON.stringify(body),
-    headers: { 'Content-Type': 'application/json' },
+    headers: { "Content-Type": "application/json" }
   })
     .then(response => response.json())
     .then(json => {
