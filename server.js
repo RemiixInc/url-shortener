@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const apilimiter = ratelimit({
   windowMs: 60000, // 1m
   max: 30, // 60 requests per minute
-  message: { sucess: false, error: "Too many requests received. Try again in a minute." }
+  message: { success: false, error: "Too many requests received. Try again in a minute." }
 });
 app.use("/api/", apilimiter);
 
