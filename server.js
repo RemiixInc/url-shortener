@@ -2,11 +2,11 @@
 const express = require("express");
 const app = express();
 const lowdb = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-const adapter = new FileSync("db.json");
+const fs = require("lowdb/adapters/FileSync");
+const adapter = new fs("db.json");
 const db = lowdb(adapter);
 const ratelimit = require("express-rate-limit-ide");
-const bodyParser = require("body-parser");
+const body = require("body-parser").json();
 
 // Ratelimit the API
 const apilimiter = ratelimit({
@@ -17,13 +17,12 @@ const apilimiter = ratelimit({
     error: "Too many requests received. Try again in a minute."
   }
 });
+
+// Apply ratelimit to routes starting with /api/
 app.use("/api/", apilimiter);
 
 // Serve static files in the public folder
 app.use(express.static("public"));
-
-// Parse json sent in requests
-var jsonParser = bodyParser.json();
 
 // Set JSON indentation
 app.set("json spaces", 2);
@@ -49,7 +48,7 @@ app.get("/api", (req, res) => {
 });
 
 // Create API
-app.post("/api/create", jsonParser, (req, res) => {
+app.post("/api/create", body, (req, res) => {
   // Get variables from request body
   var url = req.body.url;
   var slug = req.body.slug;
@@ -74,7 +73,7 @@ app.post("/api/create", jsonParser, (req, res) => {
     });
 
   // Generate delete token
-  var token = random(30);
+  const token = random(30);
 
   // If there is a custom slug
   if (slug) {
@@ -104,14 +103,15 @@ app.post("/api/create", jsonParser, (req, res) => {
     // Generate random stuff
     var slug = random(5);
 
-    // Check if slug is taken (better handler for this coming soon)
-    if (
+    // Check if slug is taken
+    while (
       db
         .get("urls")
         .find({ slug: slug })
         .value()
-    )
+    ) {
       slug = random(5);
+    }
 
     // Add to db
     db.get("urls")
@@ -125,7 +125,7 @@ app.post("/api/create", jsonParser, (req, res) => {
   }
 });
 
-app.post("/api/stats", jsonParser, (req, res) => {
+app.post("/api/stats", body, (req, res) => {
   // Get variables from request body
   var slug = req.body.slug;
 
@@ -153,7 +153,8 @@ app.post("/api/stats", jsonParser, (req, res) => {
 });
 
 // Delete API
-app.post("/api/delete", jsonParser, (req, res) => {
+app.post("/api/delete", body, (req, res) => {
+  // Get variables from request body
   var token = req.body.token;
   var slug = req.body.slug;
 
@@ -187,10 +188,10 @@ app.post("/api/delete", jsonParser, (req, res) => {
 // Slugs redirect + 404
 app.get("*", (req, res) => {
   // Get current path and slice off the first slash
-  var slug = req.path.slice(1);
+  const slug = req.path.slice(1);
 
   //  Get info for current url
-  var result = db
+  const result = db
     .get("urls")
     .find({ slug: slug })
     .value();
@@ -213,7 +214,7 @@ const listener = app.listen(8080, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
 
-// Check URL
+// Function to check if URL is valid
 function checkurl(string) {
   var url = "";
   try {
@@ -227,7 +228,7 @@ function checkurl(string) {
 // Random character generator
 function random(length) {
   var result = "";
-  var characters = "abcdefghijkmnopqrstuvwxyz0123456789";
+  const characters = "abcdefghijkmnopqrstuvwxyz0123456789";
   for (var i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
