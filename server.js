@@ -77,6 +77,13 @@ app.post("/api/create", body, (req, res) => {
 
   // If there is a custom slug
   if (slug) {
+    // Check if the slug contains bad characters
+    if (!slug.match(/^[A-Za-z0-9_-]+$/))
+      return res.status(400).json({
+        success: false,
+        error: "Slug may only contain letters, numbers, dashes and underscores."
+      });
+
     // Check if slug is taken
     if (
       db
@@ -93,6 +100,7 @@ app.post("/api/create", body, (req, res) => {
     db.get("urls")
       .push({ slug: slug, url: url, token: token, stats: 0 })
       .write();
+    
     // Return URL
     return res
       .status(200)
