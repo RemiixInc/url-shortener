@@ -17,4 +17,4 @@ Simple URL shortener with a JSON database.
 
 ## Demo
 
-- [url.remiix.ml](https://url.remiix.ml)
+- [url-shortener-template.glitch.me](https://url-shortener-template.glitch.me)
